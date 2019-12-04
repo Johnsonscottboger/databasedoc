@@ -52,7 +52,7 @@ class TableToWordUtil(val tableMapper: ITableMapper) {
         }
     }
 
-    private fun buildHead(index: Int, tableName: String, comment: String): Paragraph {
+    private fun buildHead(index: Int, tableName: String, comment: String?): Paragraph {
         return Paragraph("${index.toString()}. $tableName($comment)")
     }
 
