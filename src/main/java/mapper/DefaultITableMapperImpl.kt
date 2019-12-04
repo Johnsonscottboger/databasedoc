@@ -8,7 +8,7 @@ class DefaultITableMapperImpl : ITableMapper {
         return listOf(Table("table1", "表1"), Table("table2", "表2"))
     }
 
-    override fun getTablesByName(): List<Table> {
+    override fun getTablesByName(name: String): List<Table> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 

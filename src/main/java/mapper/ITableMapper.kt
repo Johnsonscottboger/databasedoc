@@ -7,7 +7,7 @@ interface ITableMapper {
 
     fun getAllTables(): List<Table>
 
-    fun getTablesByName(): List<Table>
+    fun getTablesByName(name: String): List<Table>
 
     fun getTableFields(tableName: String): List<TableFields>
 }

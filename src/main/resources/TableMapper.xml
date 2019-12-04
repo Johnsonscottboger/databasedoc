@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--这块等于dao接口的实现  namespace必须和接口的类路径一样-->
+<mapper namespace="mapper.ITableMapper" >
+    <!-- Result Map-->
+    <resultMap type="entity.Table" id="TableMap">
+        <result property="name" column="table_name" />
+        <result property="comment" column="comments" />
+    </resultMap>
+
+    <resultMap type="entity.TableFields" id="TableFieldsMap">
+        <result property="field" column="column_name" />
+        <result property="type" column="data_type"/>
+        <result property="length" column="data_length"/>
+        <result property="nullable" column="nullable"/>
+        <result property="comment" column="comments" />
+    </resultMap>
+
+    <select id="getAllTables" resultMap="TableMap">
+        select t.TABLE_NAME, c.comments
+        from user_tables t,
+             user_tab_comments c
+        where c.TABLE_NAME = t.TABLE_NAME
+    </select>
+
+    <select id="getTablesByName" resultMap="TableMap" parameterType="String">
+        select t.TABLE_NAME, c.comments
+        from user_tables t,
+             user_tab_comments c
+        where c.TABLE_NAME = t.TABLE_NAME
+          and t.TABLE_NAME like #{name} || '%'
+    </select>
+
+    <select id="getTableFields" resultMap="TableFieldsMap" parameterType="String">
+        select t.TABLE_NAME, t.COLUMN_NAME, t.DATA_TYPE, t.DATA_LENGTH, t.NULLABLE, c.comments
+        from user_tab_columns t,
+             user_col_comments c
+        where t.TABLE_NAME = c.table_name
+          and t.COLUMN_NAME = c.column_name
+        	and t.TABLE_NAME = #{tableName}
+    </select>
+</mapper>

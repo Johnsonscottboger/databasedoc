@@ -80,8 +80,8 @@ class TableToWordUtil(val tableMapper: ITableMapper) {
         table.addCell(Cell((index + 1).toString()).apply { horizontalAlignment = Element.ALIGN_CENTER })
         table.addCell(Cell(tableFields.field))
         table.addCell(Cell(tableFields.type))
-        table.addCell(Cell(if (tableFields.allowNull == "YES") "Y" else "N").apply { horizontalAlignment = Element.ALIGN_CENTER })
-        table.addCell(Cell(if (tableFields.isPrimaryKey == "") "Y" else "N").apply { horizontalAlignment = Element.ALIGN_CENTER })
+        table.addCell(Cell(if (tableFields.nullable == "YES") "Y" else "N").apply { horizontalAlignment = Element.ALIGN_CENTER })
+        table.addCell(Cell(if (tableFields.default == "") "Y" else "N").apply { horizontalAlignment = Element.ALIGN_CENTER })
         table.addCell(Cell(tableFields.comment))
     }
 }
