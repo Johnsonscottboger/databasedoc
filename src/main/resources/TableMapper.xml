@@ -11,6 +11,7 @@
     </resultMap>
 
     <resultMap type="entity.TableFields" id="TableFieldsMap">
+        <result property="tableName" column="TABLE_NAME"/>
         <result property="field" column="column_name" />
         <result property="type" column="data_type"/>
         <result property="length" column="data_length"/>

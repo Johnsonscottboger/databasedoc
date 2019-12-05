@@ -11,13 +11,15 @@ fun main(args: Array<String>) {
     println("*****欢迎使用!*****")
 
 
-//    val factory = getSessionFactory()
-//    val mapper = getMapper(factory)
-//    val tables = mapper.getAllTables()
+    val factory = getSessionFactory()
+    if(factory == null)
+        return
+    val mapper = getMapper(factory)
+    val tables = mapper.getTablesByName("INSP_")
 
-    val mapper = DefaultITableMapperImpl()
-    println("正在查找表...")
-    val tables = mapper.getAllTables()
+//    val mapper = DefaultITableMapperImpl()
+//    println("正在查找表...")
+//    val tables = mapper.getAllTables()
     printGreen("共查找到${tables.size}个表")
 
     TableToWordUtil(mapper).toWord(tables, "数据库文档.doc", "数据库文档")

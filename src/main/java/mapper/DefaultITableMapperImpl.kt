@@ -13,7 +13,7 @@ class DefaultITableMapperImpl : ITableMapper {
     }
 
     override fun getTableFields(tableName: String): List<TableFields> {
-        return listOf(TableFields("id", "VARCHAR", "NO", "YES", "主键", ""),
-                TableFields("name", "VARCHAR", "YES", "", "名称", ""))
+        return listOf(TableFields("", "id", "VARCHAR", "NO", "YES", "主键"),
+                TableFields("", "name", "VARCHAR", "YES", "", "名称"))
     }
 }
